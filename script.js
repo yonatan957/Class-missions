@@ -21,13 +21,20 @@ function addTask(task){
     listOfTasks = listOfTasks ? JSON.parse(listOfTasks): []
     listOfTasks.push(task)
     localStorage.setItem("tasks", JSON.stringify(listOfTasks))
-    console.log(listOfTasks)
 }
 function loadTasks(){
-    return JSON.parse(localStorage.getItem("tasks"))
+    let listOfTasks = localStorage.getItem("tasks")
+    listOfTasks = listOfTasks ? JSON.parse(listOfTasks): []
+    return listOfTasks
 }
 function removeTask(id){    
     let listOfTasks = JSON.parse(localStorage.getItem("tasks"))
     localStorage.setItem("tasks", JSON.stringify(listOfTasks.filter(t => t.id !== id)))
 }
+localStorage.clear()
+addTask({id:12, task:"kidnap some Iranian spy"})
+console.log(loadTasks())
+removeTask(12)
+console.log(loadTasks())
+
 
