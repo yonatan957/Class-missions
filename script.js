@@ -2,9 +2,11 @@ function filterAndSortEvenNumbers(list){
     return list.sort((a, b)=> a - b).filter(n => !(n%2))
 }
 function removeDuplicates(list){
-    return [...new Set(list)]
 }
 function capitalizeFirstLetter(longString){
-    let list = longString.split(" ")
+    return longString
+            .split(" ")
+            .map(e => (e[e.length-1]==".") ? e[0].toUpperCase() + e.slice(1) : e)
+            .join(" ")
 }
-capitalizeFirstLetter("dsfwefvd sgdd43wefv")
+console.log(capitalizeFirstLetter(" fweff. rewgafsdd. sdfewf grfger"))
